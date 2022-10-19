@@ -1,0 +1,89 @@
+.main__form {
+    width: 90%;
+
+    /* Label + Input */
+    .main__form-pair {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        color: map-get($colors, myBlue);
+
+        /* Inputs form */
+        & input,
+        & select,
+        & textarea {
+            border-radius: 20px;
+            border: map-get($colors, myBlue) solid 1px;
+            color: map-get($colors, myBlue);
+            resize: none;
+            font-size: 1.5rem;
+
+            &:focus {
+                outline: none;
+                border: map-get($colors, myRed) solid 1px;
+                box-shadow: none;
+            }
+        }
+    }
+
+    /* Botones form */
+    .form__button button {
+        @extend .main__button-link;
+        margin: 10px;
+        width: 80%;
+        padding: 10px 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/* Estilos desde Bootstrap */
+.form-floating {
+    &>.form-select,
+    &>.form-control,
+    &>.form-control:focus,
+    &>.form-control:not(:placeholder-shown){
+        height: auto;
+        padding: 25px 10px 10px 10px;
+    }
+
+    &>.form__textarea,
+    &>.form__textarea:focus{
+        height: auto;
+        padding-top: 30px;
+    }
+
+    &>.form-control::placeholder{
+        color: map-get($colors, myBlue);
+        font-style: italic;
+        opacity: 80%;
+        font-size: 1rem;
+    }
+
+    .form-control:focus{
+        outline: none;
+        border: map-get($colors, myRed) solid 1px;
+        box-shadow: none;
+    }
+}
+
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px){
+    .main__form {
+        width: 70%;
+    }
+}
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px){
+    .main__form {
+        width: 50%;
+
+        /* Botones form */
+        .form__button button{
+            width: 60%;
+        }
+    }
+}

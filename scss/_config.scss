@@ -1,0 +1,82 @@
+/* Paleta de colores y fuente seleccionadas */
+$colors: (
+    'myBlue': #011627,
+    'myGray': #FDFFFC,
+    'myRed': #F71735,
+    'myGreenBlue': #41EAD4,
+);
+
+$myTitle: 'Bebas Neue', cursive;
+$myText: 'Lato', sans-serif;
+
+/* Normalización de estilos */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Permite controlar el tamaño de fuente en rem: 1rem = 10px y fondo de la página */
+html{
+    font-size: 62.5%;
+    width: 100vw;
+    min-height: 100vh;
+    background: url('../assets/img/background.svg');
+    background-repeat: no-repeat;
+    background-position: top;
+    font-family: $myText;
+    overflow-x: hidden;
+}
+
+.html__views{
+    background-image: url('../assets/img/backgroud-views.svg');
+}
+
+body{
+    background-color: transparent;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/*===== ESTILOS HR (MOBILE) =====*/
+hr {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    opacity: 0.5 !important;
+
+    /*=====ESTILOS HR (TABLET) =====*/
+    @media only screen and (min-width: 768px){
+        width: 85%;
+    }
+}
+
+/* Transiciones */
+@mixin myTransition {
+    transition: all 0.5s;
+}
+
+/* Borde letras */
+@mixin myTextShadow {
+    text-shadow:
+    -1px    -1px    0   #FFFFFFFF,
+    0       -1px    0   #FFFFFFFF,
+    1px     -1px    0   #FFFFFFFF,
+    1px     0       0   #FFFFFFFF,
+    1px     1px     0   #FFFFFFFF,
+    0       1px     0   #FFFFFFFF,
+    -1px    1px     0   #FFFFFFFF,
+    -1px    0       0   #FFFFFFFF;
+}
+
+@mixin myTextShadowReverse {
+    text-shadow:
+    -1px    -1px    0   map-get($colors, myBlue),
+    0       -1px    0   map-get($colors, myBlue),
+    1px     -1px    0   map-get($colors, myBlue),
+    1px     0       0   map-get($colors, myBlue),
+    1px     1px     0   map-get($colors, myBlue),
+    0       1px     0   map-get($colors, myBlue),
+    -1px    1px     0   map-get($colors, myBlue),
+    -1px    0       0   map-get($colors, myBlue);
+}

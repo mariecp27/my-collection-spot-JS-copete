@@ -1,0 +1,251 @@
+.header__nav {
+    .container-fluid{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    /* Logo */
+    a {
+        width: 40%;
+
+        img {
+            width: 100%;
+            @include myTransition;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    /* Barra de navegación */
+    .collapse form {
+        width: 80%;
+        margin: 0 auto;
+        font-family: $myTitle;
+
+        input {
+            border: map-get($colors, myBlue) solid 1px;
+            color: map-get($colors, myBlue);
+            resize: none;
+            font-size: 1.5rem;
+            padding: 5px;
+
+            &:focus {
+                outline: none;
+                border: map-get($colors, myRed) solid 1px;
+                box-shadow: none;
+            }
+        }
+
+        /* Botones form */
+        button {
+            background-image: linear-gradient(to bottom, map-get($colors, myBlue), map-get($colors, myGray));
+            font-size: 1.5rem;
+            border: map-get($colors, myBlue) solid 1px;
+            color: map-get($colors, myBlue);
+            padding: 5px 10px;
+            white-space: nowrap;
+            @include myTextShadow;
+            @include myTransition;
+        
+            &:hover {
+                opacity: 0.8;
+                background-image: linear-gradient(to top, map-get($colors, myBlue) , map-get($colors, myBlue));
+                color: map-get($colors, myGray);
+                @include myTextShadowReverse;
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        font-family: $myTitle;
+        width: 80%;
+        margin: 0 auto;
+
+        li {
+            padding: 5px;
+            border-bottom: 1px solid map-get($colors, myBlue);
+            margin: 0 5px;
+            @include myTransition;
+
+            a {
+                text-decoration: none;
+                color: map-get($colors, myBlue);
+                font-size: 2rem;
+                margin: 0 10px;
+                width: 100%;
+            }
+
+            &:hover {
+                background-color: map-get($colors, myBlue);
+            }
+        }
+    }
+}
+
+/* Burger menu */
+.navbar-light {
+    .navbar-toggler {
+        border: solid map-get($colors, myGray) 1px;
+        background-color: map-get($colors, myBlue);
+        padding: 1rem;
+        @include myTransition;
+
+        &:hover {
+            border: solid map-get($colors, myBlue) 1px;
+            background-color: map-get($colors, myGray);
+        }
+
+        &-icon {
+            background-image: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                color: map-get($colors, myGray);
+                font-size: 2rem;
+                @include myTransition;
+
+                &:hover {
+                    color: map-get($colors, myBlue);
+                }
+            }
+        }
+    }
+
+    .navbar-nav {
+        .nav-item .nav-link {
+            text-align: center;
+        }
+
+        .nav-link.active{
+            color: map-get($colors, myBlue);
+        }
+
+        .nav-item:hover .nav-link{
+            color: map-get($colors, myGray);
+        }
+    }
+}
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px){
+    .header__nav{
+        /* Logo */
+        a {
+            width: 30%;
+        }
+
+        /* Barra de navegación */
+        .collapse form {
+            width: 90%;
+        }
+
+        ul {
+            flex-direction: row;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+
+            li {
+                border-bottom: none;
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        /* Burger menu */
+        .navbar-light .navbar-nav .nav-item .nav-link {
+            width: auto;
+            text-align: center;
+        }
+    }
+}
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px){
+    .header__nav {
+        /* Logo */
+        a {
+            width: 20%;
+            margin: 20px;
+        }
+
+        /* Barra de navegación */
+        .collapse form {
+            width: 80%;
+        }
+    }
+}
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px){
+    .header__nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-image: linear-gradient(to bottom, #000000, transparent);
+
+        /* Logo */
+        a {
+            margin: 0 20px;
+        }
+
+        /* Barra de navegación */
+        .collapse form {
+            width: 100%;
+
+            input,
+            button {
+                font-size: 2rem;
+            }
+        }
+
+        ul {
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0 20px;
+
+            li:hover{
+                background-color: map-get($colors, myGray);
+            }
+        }
+    }
+
+    /* Burger menu */
+    .navbar-light {
+        .navbar-nav {
+            .nav-link {
+                color: map-get($colors, myGray);
+                opacity: 0.8;
+
+                &.active {
+                    color: map-get($colors, myGray);
+                    opacity: 1;
+                }
+            }
+
+            .nav-item:hover .nav-link {
+                color: map-get($colors, myBlue);
+            }
+        } 
+    }
+}
+
+/*===== ESTILOS DESKTOP - XL =====*/
+@media only screen and (min-width: 1024px){
+    /* Logo */
+    .header__nav a{
+        width: 15%;
+    }
+}

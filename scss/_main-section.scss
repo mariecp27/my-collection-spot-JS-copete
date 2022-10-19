@@ -1,0 +1,199 @@
+/* Contenedor productos + título + botón*/
+.main__products {
+    margin: 0 20px;
+    width: auto;
+
+    /* Titulos seccion principal index */
+    h2 {
+        font-family: $myTitle;
+        font-size: 3rem;
+        font-weight: 900;
+        margin: 0;
+        letter-spacing: 0.135em;
+        color: map-get($colors, myBlue);
+        margin-bottom: 10px;
+    }
+
+    /* Elineación diferente para segundo título del index */
+    &-on-sale {
+        display: flex;
+        justify-content: flex-end;
+
+        h2 {
+            width: auto;
+        }
+    }
+
+    /* Contenedor producto individual */
+    &-container article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 90%;
+            margin: 10px;
+            transition: all 0.5s;
+        }
+
+        
+        &:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Textos de cada producto */
+        h3 {
+            margin-top: 3px;
+            text-align: center;
+            font-family: $myTitle;
+            font-size: 2rem;
+            color: map-get($colors, myBlue);
+            letter-spacing: 0.135em;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-family: $myText;
+            font-size: 1.5rem;
+            color: map-get($colors, myBlue);
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        em,
+        & strong {
+            font-size: 1.5rem;
+            color: map-get($colors, myBlue);
+        }
+
+        /* Carrito de compra */
+        .main__products-car-form {
+            display: flex;
+            flex-direction: column;
+            font-family: $myTitle;
+            font-size: 1.5rem;
+
+            div {
+                display: flex;
+                margin: 10px auto;
+                width: 50%;
+
+                button {
+                    padding: 0 10px;
+                    background-color: map-get($colors, myBlue);
+                    color: map-get($colors, myGray);
+                    border: 1px solid map-get($colors, myBlue);
+                    font-size: 2rem;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                .minus {
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                }
+
+                .plus {
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                input {
+                    width: 50%;
+                    text-align: center;
+                    border: 1px solid map-get($colors, myBlue);
+                }
+            }
+
+            .main__products-car-button {
+                background-color: map-get($colors, myBlue);
+                font-size: 2rem;
+                padding: 5px;
+                border-radius: 10px;
+                border: map-get($colors, myBlue) solid 1px;
+                color: map-get($colors, myGray);
+                white-space: nowrap;
+                @include myTransition;
+            
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+/* Botones "Ver más" */
+.main__button {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+
+.main__button-link {
+    background-image: linear-gradient(to bottom, map-get($colors, myBlue), map-get($colors, myGray));
+    font-family: $myTitle;
+    font-size: 2rem;
+    text-decoration: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: map-get($colors, myBlue) solid 2px;
+    color: map-get($colors, myBlue);
+    white-space: nowrap;
+    @include myTextShadow;
+    @include myTransition;
+
+    &:hover{
+        opacity: 0.8;
+        background-image: linear-gradient(to top, map-get($colors, myBlue) , map-get($colors, myBlue));
+        color: map-get($colors, myGray);
+        @include myTextShadowReverse;
+    }
+}
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px){
+
+    .main__products-container article {
+        img {
+            width: 80%;
+        }
+        
+        /* Textos de cada producto */
+        h3 {
+            font-size: 2.5rem;
+        }
+    } 
+
+    /* Botones "Ver más" */
+    .main__button {
+        display: flex;
+        justify-content: center;
+        margin: 40px;
+    }
+
+    .main__button-link {
+        font-size: 2.5rem;
+    }
+}
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px){
+    /* Titulos seccion principal index */
+    .main__products {
+        width: 90%;
+        margin: 0 auto;
+
+        h2 {
+            font-size: 5rem;
+        }
+    } 
+
+    /* Botones "Ver más" */
+    .main__button-link {
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,17 @@
+.main__about-us {
+    /* Imagen */
+    img {
+        width: 100%;
+    }
+
+    /* Texto quienes somos */
+    div p {
+        font-family: $myText;
+        font-size: 1.5rem;
+        color: map-get($colors, myBlue);
+        margin-bottom: 5px;
+        text-align: justify;
+        line-height: 1.5;
+    }
+}
+

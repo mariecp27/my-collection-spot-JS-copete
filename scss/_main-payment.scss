@@ -1,0 +1,30 @@
+.main__payment{
+    margin: 0 20px;
+    width: auto;
+
+    &-title h2{
+        font-family: $myTitle;
+        font-size: 3rem;
+        font-weight: 900;
+        margin: 0;
+        letter-spacing: 0.135em;
+        color: map-get($colors, myBlue);
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    &-icons img{
+        @include myTransition;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px){
+    .main__payment-title h2{
+        font-size: 4rem;
+    }
+}

@@ -1,0 +1,225 @@
+/* Contenedor banner */
+.main__title {
+    display: flex;
+    height: 60vh;
+    width: 80%;
+    margin: 20px;
+    pointer-events: none;
+
+    /* Contenedor banner páginas diferentes al index */
+    &-views {
+        height: 30vh;
+        width: 100%;
+
+        div {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* Títulos */
+    div.container-fluid {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        position: relative;
+
+        h1 {
+            font-family: $myTitle;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 0.135em;
+            color: map-get($colors, myBlue);
+            @include myTextShadow;
+        }
+
+        h2 {
+            font-family: $myText;
+            color: #FFFFFFFF;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-style: italic;
+            letter-spacing: 2px;
+            @include myTextShadowReverse;
+        }
+    }
+
+    /* Títulos de las páginas diferentes al index */
+    &-views div.container-fluid h1 {
+        font-size: 10rem;
+    }
+
+    &-views-long div.container-fluid h1{
+        font-size: 7rem;
+        margin: 0 10px;
+    }
+
+    div h2.main__title-views-back{
+        margin: 0;
+        font-family: $myTitle;
+        font-style: normal;
+        position: absolute;
+        text-align: right;
+        font-size: 20rem;
+        right: 0;
+        opacity: 20%;
+        z-index: -1;
+        color: map-get($colors, myBlue);
+        @include myTextShadow;
+
+        &-long{
+            font-size: 12rem;
+        }
+    }
+
+    /* Imagen banner index */
+    &-img{
+        position: absolute;
+        right: 0;
+        width: 60%;
+        animation: change 5s infinite alternate;
+        z-index: -1;
+
+        &-above{
+            display: none;
+        }
+    }
+}
+
+/* Animación imagen banner*/
+@keyframes change {
+    0% { transform: translateY(-20px); }
+}
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px){
+
+    /* Títulos de las páginas diferentes al index */
+    .main__title {
+        &-views {
+            div.container-fluid h1 {
+                font-size: 15rem;
+            }
+    
+            &-long div.container-fluid h1{
+                font-size: 10rem;
+            }
+        } 
+
+        div h2.main__title-views-back{
+            font-size: 25rem;
+
+            &-long{
+                font-size: 15rem;
+            }
+        }
+
+        /* Imagen banner index */
+        &-img{
+            width: 40%;
+        }
+    }
+}
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px){
+    /* Títulos */
+    .main__title {
+        div.container-fluid {
+            h1 {
+                font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        } 
+
+        /* Contenedor banner páginas diferentes al index */
+        &-views {
+            width: 100%;
+
+            div.container-fluid {
+                width: 100%;
+
+                /* Títulos de las páginas diferentes al index */
+                h1 {
+                    font-size: 15rem;
+                }
+
+                h2.main__title-views-back {
+                    font-size: 25rem;
+
+                    &-long{
+                        font-size: 20rem;
+                    }
+                }
+            }
+            
+        }
+
+        /* Imagen banner index */
+        &-img {
+            mix-blend-mode: overlay;
+            right: 5px;
+            width: 35%;
+            opacity: 0.8;
+
+            &-above {
+                display: block;
+                mix-blend-mode: normal;
+                right: 10px;
+                opacity: 1;
+            }
+        }
+    }
+}
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px){
+    /* Títulos */
+    .main__title {
+        div.container-fluid {
+            h1 {
+                font-size: 6rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Contenedor banner páginas diferentes al index */
+        &-views {
+            width: 100%;
+
+            div.container-fluid {
+                width: 100%;
+
+                /* Títulos de las páginas diferentes al index */
+                h1 {
+                    font-size: 15rem;
+                }
+
+                h2.main__title-views-back {
+                    font-size: 40rem;
+
+                    &-long {
+                        font-size: 25rem;
+                    }
+                }
+            }
+        }
+
+        /* Imagen banner index */
+        &-img {
+            width: 25%;
+            top: 100px;
+
+            &-above {
+                right: 15px;
+            }
+        }
+    }
+}

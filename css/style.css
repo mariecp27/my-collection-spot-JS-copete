@@ -1,0 +1,720 @@
+@charset "UTF-8";
+/* Paleta de colores y fuente seleccionadas */
+/* Normalización de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* Permite controlar el tamaño de fuente en rem: 1rem = 10px y fondo de la página */
+html {
+  font-size: 62.5%;
+  width: 100vw;
+  min-height: 100vh;
+  background: url("../assets/img/background.svg");
+  background-repeat: no-repeat;
+  background-position: top;
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden; }
+
+.html__views {
+  background-image: url("../assets/img/backgroud-views.svg"); }
+
+body {
+  background-color: transparent;
+  width: 100%;
+  overflow-x: hidden; }
+
+/*===== ESTILOS HR (MOBILE) =====*/
+hr {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  opacity: 0.5 !important;
+  /*=====ESTILOS HR (TABLET) =====*/ }
+  @media only screen and (min-width: 768px) {
+    hr {
+      width: 85%; } }
+
+/* Transiciones */
+/* Borde letras */
+.header__nav {
+  /* Logo */
+  /* Barra de navegación */ }
+  .header__nav .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px; }
+  .header__nav a {
+    width: 40%; }
+    .header__nav a img {
+      width: 100%;
+      transition: all 0.5s; }
+      .header__nav a img:hover {
+        transform: scale(1.1); }
+  .header__nav .collapse form {
+    width: 80%;
+    margin: 0 auto;
+    font-family: "Bebas Neue", cursive;
+    /* Botones form */ }
+    .header__nav .collapse form input {
+      border: #011627 solid 1px;
+      color: #011627;
+      resize: none;
+      font-size: 1.5rem;
+      padding: 5px; }
+      .header__nav .collapse form input:focus {
+        outline: none;
+        border: #F71735 solid 1px;
+        box-shadow: none; }
+    .header__nav .collapse form button {
+      background-image: linear-gradient(to bottom, #011627, #FDFFFC);
+      font-size: 1.5rem;
+      border: #011627 solid 1px;
+      color: #011627;
+      padding: 5px 10px;
+      white-space: nowrap;
+      text-shadow: -1px    -1px    0   #FFFFFFFF, 0       -1px    0   #FFFFFFFF, 1px     -1px    0   #FFFFFFFF, 1px     0       0   #FFFFFFFF, 1px     1px     0   #FFFFFFFF, 0       1px     0   #FFFFFFFF, -1px    1px     0   #FFFFFFFF, -1px    0       0   #FFFFFFFF;
+      transition: all 0.5s; }
+      .header__nav .collapse form button:hover {
+        opacity: 0.8;
+        background-image: linear-gradient(to top, #011627, #011627);
+        color: #FDFFFC;
+        text-shadow: -1px -1px 0 #011627, 0 -1px 0 #011627, 1px -1px 0 #011627, 1px 0 0 #011627, 1px 1px 0 #011627, 0 1px 0 #011627, -1px 1px 0 #011627, -1px 0 0 #011627; }
+  .header__nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    font-family: "Bebas Neue", cursive;
+    width: 80%;
+    margin: 0 auto; }
+    .header__nav ul li {
+      padding: 5px;
+      border-bottom: 1px solid #011627;
+      margin: 0 5px;
+      transition: all 0.5s; }
+      .header__nav ul li a {
+        text-decoration: none;
+        color: #011627;
+        font-size: 2rem;
+        margin: 0 10px;
+        width: 100%; }
+      .header__nav ul li:hover {
+        background-color: #011627; }
+
+/* Burger menu */
+.navbar-light .navbar-toggler {
+  border: solid #FDFFFC 1px;
+  background-color: #011627;
+  padding: 1rem;
+  transition: all 0.5s; }
+  .navbar-light .navbar-toggler:hover {
+    border: solid #011627 1px;
+    background-color: #FDFFFC; }
+  .navbar-light .navbar-toggler-icon {
+    background-image: none;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .navbar-light .navbar-toggler-icon i {
+      color: #FDFFFC;
+      font-size: 2rem;
+      transition: all 0.5s; }
+      .navbar-light .navbar-toggler-icon i:hover {
+        color: #011627; }
+
+.navbar-light .navbar-nav .nav-item .nav-link {
+  text-align: center; }
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #011627; }
+
+.navbar-light .navbar-nav .nav-item:hover .nav-link {
+  color: #FDFFFC; }
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px) {
+  .header__nav {
+    /* Logo */
+    /* Barra de navegación */
+    /* Burger menu */ }
+    .header__nav a {
+      width: 30%; }
+    .header__nav .collapse form {
+      width: 90%; }
+    .header__nav ul {
+      flex-direction: row;
+      width: 100%;
+      text-align: center;
+      justify-content: center; }
+      .header__nav ul li {
+        border-bottom: none;
+        margin: 0;
+        display: flex;
+        align-items: center; }
+    .header__nav .navbar-light .navbar-nav .nav-item .nav-link {
+      width: auto;
+      text-align: center; } }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  .header__nav {
+    /* Logo */
+    /* Barra de navegación */ }
+    .header__nav a {
+      width: 20%;
+      margin: 20px; }
+    .header__nav .collapse form {
+      width: 80%; } }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  .header__nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #000000, transparent);
+    /* Logo */
+    /* Barra de navegación */ }
+    .header__nav a {
+      margin: 0 20px; }
+    .header__nav .collapse form {
+      width: 100%; }
+      .header__nav .collapse form input,
+      .header__nav .collapse form button {
+        font-size: 2rem; }
+    .header__nav ul {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0 20px; }
+      .header__nav ul li:hover {
+        background-color: #FDFFFC; }
+  /* Burger menu */
+  .navbar-light .navbar-nav .nav-link {
+    color: #FDFFFC;
+    opacity: 0.8; }
+    .navbar-light .navbar-nav .nav-link.active {
+      color: #FDFFFC;
+      opacity: 1; }
+  .navbar-light .navbar-nav .nav-item:hover .nav-link {
+    color: #011627; } }
+
+/*===== ESTILOS DESKTOP - XL =====*/
+@media only screen and (min-width: 1024px) {
+  /* Logo */
+  .header__nav a {
+    width: 15%; } }
+
+/* Contenedor banner */
+.main__title {
+  display: flex;
+  height: 60vh;
+  width: 80%;
+  margin: 20px;
+  pointer-events: none;
+  /* Contenedor banner páginas diferentes al index */
+  /* Títulos */
+  /* Títulos de las páginas diferentes al index */
+  /* Imagen banner index */ }
+  .main__title-views {
+    height: 30vh;
+    width: 100%; }
+    .main__title-views div {
+      width: 100%;
+      text-align: center; }
+  .main__title div.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative; }
+    .main__title div.container-fluid h1 {
+      font-family: "Bebas Neue", cursive;
+      font-size: 3rem;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 0.135em;
+      color: #011627;
+      text-shadow: -1px    -1px    0   #FFFFFFFF, 0       -1px    0   #FFFFFFFF, 1px     -1px    0   #FFFFFFFF, 1px     0       0   #FFFFFFFF, 1px     1px     0   #FFFFFFFF, 0       1px     0   #FFFFFFFF, -1px    1px     0   #FFFFFFFF, -1px    0       0   #FFFFFFFF; }
+    .main__title div.container-fluid h2 {
+      font-family: "Lato", sans-serif;
+      color: #FFFFFFFF;
+      font-size: 1.5rem;
+      margin-top: 20px;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-shadow: -1px -1px 0 #011627, 0 -1px 0 #011627, 1px -1px 0 #011627, 1px 0 0 #011627, 1px 1px 0 #011627, 0 1px 0 #011627, -1px 1px 0 #011627, -1px 0 0 #011627; }
+  .main__title-views div.container-fluid h1 {
+    font-size: 10rem; }
+  .main__title-views-long div.container-fluid h1 {
+    font-size: 7rem;
+    margin: 0 10px; }
+  .main__title div h2.main__title-views-back {
+    margin: 0;
+    font-family: "Bebas Neue", cursive;
+    font-style: normal;
+    position: absolute;
+    text-align: right;
+    font-size: 20rem;
+    right: 0;
+    opacity: 20%;
+    z-index: -1;
+    color: #011627;
+    text-shadow: -1px    -1px    0   #FFFFFFFF, 0       -1px    0   #FFFFFFFF, 1px     -1px    0   #FFFFFFFF, 1px     0       0   #FFFFFFFF, 1px     1px     0   #FFFFFFFF, 0       1px     0   #FFFFFFFF, -1px    1px     0   #FFFFFFFF, -1px    0       0   #FFFFFFFF; }
+    .main__title div h2.main__title-views-back-long {
+      font-size: 12rem; }
+  .main__title-img {
+    position: absolute;
+    right: 0;
+    width: 60%;
+    animation: change 5s infinite alternate;
+    z-index: -1; }
+    .main__title-img-above {
+      display: none; }
+
+/* Animación imagen banner*/
+@keyframes change {
+  0% {
+    transform: translateY(-20px); } }
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px) {
+  /* Títulos de las páginas diferentes al index */
+  .main__title {
+    /* Imagen banner index */ }
+    .main__title-views div.container-fluid h1 {
+      font-size: 15rem; }
+    .main__title-views-long div.container-fluid h1 {
+      font-size: 10rem; }
+    .main__title div h2.main__title-views-back {
+      font-size: 25rem; }
+      .main__title div h2.main__title-views-back-long {
+        font-size: 15rem; }
+    .main__title-img {
+      width: 40%; } }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  /* Títulos */
+  .main__title {
+    /* Contenedor banner páginas diferentes al index */
+    /* Imagen banner index */ }
+    .main__title div.container-fluid h1 {
+      font-size: 4rem; }
+    .main__title div.container-fluid h2 {
+      font-size: 2rem; }
+    .main__title-views {
+      width: 100%; }
+      .main__title-views div.container-fluid {
+        width: 100%;
+        /* Títulos de las páginas diferentes al index */ }
+        .main__title-views div.container-fluid h1 {
+          font-size: 15rem; }
+        .main__title-views div.container-fluid h2.main__title-views-back {
+          font-size: 25rem; }
+          .main__title-views div.container-fluid h2.main__title-views-back-long {
+            font-size: 20rem; }
+    .main__title-img {
+      mix-blend-mode: overlay;
+      right: 5px;
+      width: 35%;
+      opacity: 0.8; }
+      .main__title-img-above {
+        display: block;
+        mix-blend-mode: normal;
+        right: 10px;
+        opacity: 1; } }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  /* Títulos */
+  .main__title {
+    /* Contenedor banner páginas diferentes al index */
+    /* Imagen banner index */ }
+    .main__title div.container-fluid h1 {
+      font-size: 6rem; }
+    .main__title div.container-fluid h2 {
+      font-size: 2.5rem; }
+    .main__title-views {
+      width: 100%; }
+      .main__title-views div.container-fluid {
+        width: 100%;
+        /* Títulos de las páginas diferentes al index */ }
+        .main__title-views div.container-fluid h1 {
+          font-size: 15rem; }
+        .main__title-views div.container-fluid h2.main__title-views-back {
+          font-size: 40rem; }
+          .main__title-views div.container-fluid h2.main__title-views-back-long {
+            font-size: 25rem; }
+    .main__title-img {
+      width: 25%;
+      top: 100px; }
+      .main__title-img-above {
+        right: 15px; } }
+
+/* Contenedor productos + título + botón*/
+.main__products {
+  margin: 0 20px;
+  width: auto;
+  /* Titulos seccion principal index */
+  /* Elineación diferente para segundo título del index */
+  /* Contenedor producto individual */ }
+  .main__products h2 {
+    font-family: "Bebas Neue", cursive;
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0.135em;
+    color: #011627;
+    margin-bottom: 10px; }
+  .main__products-on-sale {
+    display: flex;
+    justify-content: flex-end; }
+    .main__products-on-sale h2 {
+      width: auto; }
+  .main__products-container article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Textos de cada producto */
+    /* Carrito de compra */ }
+    .main__products-container article img {
+      width: 90%;
+      margin: 10px;
+      transition: all 0.5s; }
+    .main__products-container article:hover img {
+      transform: scale(1.1); }
+    .main__products-container article h3 {
+      margin-top: 3px;
+      text-align: center;
+      font-family: "Bebas Neue", cursive;
+      font-size: 2rem;
+      color: #011627;
+      letter-spacing: 0.135em;
+      font-weight: bold; }
+    .main__products-container article h4 {
+      font-family: "Lato", sans-serif;
+      font-size: 1.5rem;
+      color: #011627;
+      margin-bottom: 5px;
+      font-weight: bold; }
+    .main__products-container article em,
+    .main__products-container article strong {
+      font-size: 1.5rem;
+      color: #011627; }
+    .main__products-container article .main__products-car-form {
+      display: flex;
+      flex-direction: column;
+      font-family: "Bebas Neue", cursive;
+      font-size: 1.5rem; }
+      .main__products-container article .main__products-car-form div {
+        display: flex;
+        margin: 10px auto;
+        width: 50%; }
+        .main__products-container article .main__products-car-form div button {
+          padding: 0 10px;
+          background-color: #011627;
+          color: #FDFFFC;
+          border: 1px solid #011627;
+          font-size: 2rem; }
+          .main__products-container article .main__products-car-form div button:hover {
+            opacity: 0.8; }
+        .main__products-container article .main__products-car-form div .minus {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px; }
+        .main__products-container article .main__products-car-form div .plus {
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px; }
+        .main__products-container article .main__products-car-form div input {
+          width: 50%;
+          text-align: center;
+          border: 1px solid #011627; }
+      .main__products-container article .main__products-car-form .main__products-car-button {
+        background-color: #011627;
+        font-size: 2rem;
+        padding: 5px;
+        border-radius: 10px;
+        border: #011627 solid 1px;
+        color: #FDFFFC;
+        white-space: nowrap;
+        transition: all 0.5s; }
+        .main__products-container article .main__products-car-form .main__products-car-button:hover {
+          opacity: 0.8; }
+
+/* Botones "Ver más" */
+.main__button {
+  display: flex;
+  justify-content: center;
+  margin: 40px; }
+
+.main__button-link, .main__form .form__button button {
+  background-image: linear-gradient(to bottom, #011627, #FDFFFC);
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: #011627 solid 2px;
+  color: #011627;
+  white-space: nowrap;
+  text-shadow: -1px    -1px    0   #FFFFFFFF, 0       -1px    0   #FFFFFFFF, 1px     -1px    0   #FFFFFFFF, 1px     0       0   #FFFFFFFF, 1px     1px     0   #FFFFFFFF, 0       1px     0   #FFFFFFFF, -1px    1px     0   #FFFFFFFF, -1px    0       0   #FFFFFFFF;
+  transition: all 0.5s; }
+  .main__button-link:hover, .main__form .form__button button:hover {
+    opacity: 0.8;
+    background-image: linear-gradient(to top, #011627, #011627);
+    color: #FDFFFC;
+    text-shadow: -1px -1px 0 #011627, 0 -1px 0 #011627, 1px -1px 0 #011627, 1px 0 0 #011627, 1px 1px 0 #011627, 0 1px 0 #011627, -1px 1px 0 #011627, -1px 0 0 #011627; }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  .main__products-container article {
+    /* Textos de cada producto */ }
+    .main__products-container article img {
+      width: 80%; }
+    .main__products-container article h3 {
+      font-size: 2.5rem; }
+  /* Botones "Ver más" */
+  .main__button {
+    display: flex;
+    justify-content: center;
+    margin: 40px; }
+  .main__button-link, .main__form .form__button button {
+    font-size: 2.5rem; } }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  /* Titulos seccion principal index */
+  .main__products {
+    width: 90%;
+    margin: 0 auto; }
+    .main__products h2 {
+      font-size: 5rem; }
+  /* Botones "Ver más" */
+  .main__button-link, .main__form .form__button button {
+    font-size: 3rem; } }
+
+.main__payment {
+  margin: 0 20px;
+  width: auto; }
+  .main__payment-title h2 {
+    font-family: "Bebas Neue", cursive;
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0.135em;
+    color: #011627;
+    margin-bottom: 10px;
+    text-align: center; }
+  .main__payment-icons img {
+    transition: all 0.5s; }
+    .main__payment-icons img:hover {
+      transform: scale(1.1); }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  .main__payment-title h2 {
+    font-size: 4rem; } }
+
+.main__about-us {
+  /* Imagen */
+  /* Texto quienes somos */ }
+  .main__about-us img {
+    width: 100%; }
+  .main__about-us div p {
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    color: #011627;
+    margin-bottom: 5px;
+    text-align: justify;
+    line-height: 1.5; }
+
+.main__form {
+  width: 90%;
+  /* Label + Input */
+  /* Botones form */ }
+  .main__form .main__form-pair {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #011627;
+    /* Inputs form */ }
+    .main__form .main__form-pair input,
+    .main__form .main__form-pair select,
+    .main__form .main__form-pair textarea {
+      border-radius: 20px;
+      border: #011627 solid 1px;
+      color: #011627;
+      resize: none;
+      font-size: 1.5rem; }
+      .main__form .main__form-pair input:focus,
+      .main__form .main__form-pair select:focus,
+      .main__form .main__form-pair textarea:focus {
+        outline: none;
+        border: #F71735 solid 1px;
+        box-shadow: none; }
+  .main__form .form__button button {
+    margin: 10px;
+    width: 80%;
+    padding: 10px 0; }
+    .main__form .form__button button:hover {
+      cursor: pointer; }
+
+/* Estilos desde Bootstrap */
+.form-floating > .form-select,
+.form-floating > .form-control,
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  height: auto;
+  padding: 25px 10px 10px 10px; }
+
+.form-floating > .form__textarea,
+.form-floating > .form__textarea:focus {
+  height: auto;
+  padding-top: 30px; }
+
+.form-floating > .form-control::placeholder {
+  color: #011627;
+  font-style: italic;
+  opacity: 80%;
+  font-size: 1rem; }
+
+.form-floating .form-control:focus {
+  outline: none;
+  border: #F71735 solid 1px;
+  box-shadow: none; }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  .main__form {
+    width: 70%; } }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  .main__form {
+    width: 50%;
+    /* Botones form */ }
+    .main__form .form__button button {
+      width: 60%; } }
+
+footer {
+  background-color: #F71735;
+  margin-top: 20px;
+  padding: 10px; }
+
+.footer {
+  /* Logo footer */
+  /* Navegación footer */
+  /* Redes footer */
+  /* Copyright del footer */ }
+  .footer__logo {
+    position: absolute;
+    right: 0;
+    opacity: 0.7;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 55%; }
+    .footer__logo img {
+      width: 100%; }
+  .footer__links {
+    position: relative;
+    z-index: 2; }
+    .footer__links nav ul {
+      list-style: none;
+      font-family: "Bebas Neue", cursive;
+      text-align: center; }
+      .footer__links nav ul li {
+        margin-bottom: 10px; }
+        .footer__links nav ul li:hover {
+          transform: scale(1.1); }
+        .footer__links nav ul li a {
+          font-family: "Bebas Neue", cursive;
+          text-decoration: none;
+          color: #FDFFFC;
+          font-size: 2rem;
+          margin: 0 10px;
+          transition: all 0.5s;
+          text-align: center; }
+  .footer__social {
+    position: relative;
+    z-index: 2; }
+    .footer__social div {
+      display: flex;
+      justify-content: center; }
+    .footer__social p {
+      font-family: "Bebas Neue", cursive;
+      text-decoration: none;
+      color: #FDFFFC;
+      font-size: 2rem;
+      margin: 0 10px;
+      transition: all 0.5s;
+      text-align: center;
+      margin-top: 10px; }
+    .footer__social a {
+      text-decoration: none;
+      color: #011627;
+      border-radius: 50%;
+      border: 2px solid #FDFFFC;
+      margin: 10px;
+      padding: 15px 18px;
+      background-color: #011627;
+      transition: all 0.5s; }
+      .footer__social a:hover {
+        transform: translateY(-10px);
+        background-color: #FDFFFC;
+        border: 2px solid #011627; }
+        .footer__social a:hover i {
+          color: #011627; }
+      .footer__social a i {
+        font-size: 2rem;
+        color: #FDFFFC;
+        transition: all 0.5s; }
+      .footer__social a img {
+        width: 3vw;
+        margin: 10px;
+        transition: all 0.5s; }
+        .footer__social a img:hover {
+          transform: scale(1.1); }
+  .footer__copyright {
+    text-align: center;
+    color: #FDFFFC;
+    font-family: "Bebas Neue", cursive;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 2; }
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px) {
+  /* Logo footer */
+  .footer__logo {
+    width: 40%; } }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  footer {
+    background-color: transparent;
+    background-image: url("../assets/img/footer.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; }
+  .footer {
+    /* Elmentos del footer menos la sección de copyright */
+    /* Logo footer */
+    /* Navegación footer */
+    /* Copyright del footer */ }
+    .footer__container {
+      padding: 10px;
+      width: 100%; }
+    .footer__logo {
+      position: static;
+      opacity: 1;
+      width: 10%; }
+    .footer__links nav ul li a,
+    .footer__social p {
+      color: #011627; }
+    .footer__copyright {
+      padding-bottom: 0; } }
