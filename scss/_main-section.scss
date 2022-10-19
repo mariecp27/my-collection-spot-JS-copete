@@ -1,3 +1,61 @@
+.main__products-full-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Categorias */
+.main__products-categories {
+    font-family: $myText;
+    font-size: 1.5rem;
+    border: 4px solid map-get($colors, myBlue);
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    ul {
+        list-style: none;
+        color: map-get($colors, myBlue);
+        padding: 10px 10px 0 10px;
+
+        li {
+            border-bottom: solid 1px rgba(1, 22, 39, 0.2);
+            padding: 10px;
+
+            &:hover{
+                background-color: rgba(1, 22, 39, 0.5);
+                cursor: pointer;
+
+                a {
+                    color: map-get($colors, myGray);
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: map-get($colors, myBlue);
+            }
+        }
+
+        .main__products-categories-title{
+            background-color: map-get($colors, myBlue);
+            color: map-get($colors, myGray);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-family: $myTitle;
+            font-size: 2rem;
+
+            &:hover{
+                background-color: map-get($colors, myBlue );
+            }
+        }
+
+        .main__products-categories-last-item{
+            border-bottom: none;
+        }
+    }
+}
+
 /* Contenedor productos + título + botón*/
 .main__products {
     margin: 0 20px;
@@ -126,6 +184,13 @@
     }
 }
 
+/* Se eliminan los botones por defecto del input tipo number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
 /* Botones "Ver más" */
 .main__button {
     display: flex;
@@ -154,9 +219,36 @@
     }
 }
 
-/*===== ESTILOS TABLET - MD =====*/
-@media only screen and (min-width: 768px){
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px){
+    /* Categorias */
+    .main__products-categories {
+        width: 50%;
+    }
+}
 
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+    .main__products-full-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    /* Contenedor productos + título + botón*/
+    .main__products-views {
+        margin: 0;
+        width: 80%;
+        border-left: solid 1px rgba(1, 22, 39, 0.2);
+    }
+
+    /* Categorias */
+    .main__products-categories {
+        margin: 0 10px;
+        border: 1px solid #ffffff;
+        width: 20%;
+    }
+
+    /* Contenedor producto individual */
     .main__products-container article {
         img {
             width: 80%;

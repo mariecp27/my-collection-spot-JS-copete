@@ -8,4 +8,4 @@ Proyecto realizado en la Carrera de Desarrollo Frontend React de Coder House.
 4. [Bootstrap 5](https://getbootstrap.com/)
 5. SASS
 
-**El proyecto puede visualizarse en: [Deploy](https://mariecp27.github.io/my-collection-spot-V2-copete/)**
+**El proyecto puede visualizarse en: [Deploy](https://mariecp27.github.io/my-collection-spot-JS-copete/)**
