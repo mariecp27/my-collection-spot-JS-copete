@@ -295,8 +295,10 @@ do {
             filterByCategory();
             break;
         case '4':
+            printProductsInShoppingCar();
             break;
         case '5':
+            updateShoppingCar();
             break;
         case '6':
             break;
@@ -319,7 +321,7 @@ function buyProduct() {
                 product.amountInShoppingCar = getProductAmount();
                 addProductToShoppingCar(product);
                 alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
-            } else if (parseInt(desiredproduct) > (productsAmount + 1) || parseInt(desiredproduct) <= 0){
+            } else if (parseInt(desiredproduct) > (productsAmount + 1) || parseInt(desiredproduct) <= 0) {
                 alert(`Por favor ingrese una opción válida: 1 - ${productsAmount + 1}`);
             }
         } else {
@@ -377,7 +379,7 @@ function getProductsInShoppingCarString() {
         productsInShoppingCarString = "De momento no hay productos en el carrito";
     } else {
         productsInShoppingCar.forEach( (product, i) => {
-            productsInShoppingCarString += `\n${i + 1}. Producto: ${product.name} - Cantidad: ${product.amountInShoppingCar}`;
+            productsInShoppingCarString += `\n${i + 1}. Producto: ${product.name} - Precio: ${product.finalPrice} COP - Cantidad: ${product.amountInShoppingCar}`;
         })
     }
     return productsInShoppingCarString;
@@ -434,7 +436,7 @@ function filterByCategory() {
     } while (desiredCategory != '8');
 }
 
-function printCategories(){
+function printCategories() {
     let categoriesString = '';
     categories.forEach( (category, i) => {
         categoriesString += `\n${i + 1}. ${category}`;
@@ -505,3 +507,60 @@ function getSeriesProducts() {
     return productsString;
 }
 
+function printProductsInShoppingCar() {
+    alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
+}
+
+function updateShoppingCar() {
+    let desiredproduct = '';
+    let shoppingCarOption = '';
+    do {
+        desiredproduct = prompt(`Selecciona el producto de tu carrito de compras que deseas modificar: ${getProductsInShoppingCarString()} \n${getProductsInShoppingCar().length + 1}. Regresar`);
+        if (isNaN(parseInt(desiredproduct))) {
+            alert(`Por favor ingrese una opción válida: 1 - ${getProductsInShoppingCar().length + 1}`);
+        } else {
+            if (parseInt(desiredproduct) <= getProductsInShoppingCar().length && parseInt(desiredproduct) > 0) {
+                let product = searchProductInShoppingCarByIndex(parseInt(desiredproduct - 1));
+                shoppingCarOption = prompt(`¿Qué deseas hacer? \n1. Modificar cantidad \n2. Eliminar del carrito`);
+                switch (shoppingCarOption) {
+                    case '1':
+                        updateProductInShoppingCar(product);
+                        break;
+                    case '2':
+                        deleteProductInShoppingCar(product);
+                        break;
+                    default:
+                        alert('Por favor ingrese una opción válida: 1 - 2');
+                        break;
+                }
+                alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
+            } else if (parseInt(desiredproduct) > (getProductsInShoppingCar().length + 1) || parseInt(desiredproduct) <= 0) {
+                alert(`Por favor ingrese una opción válida: 1 - ${getProductsInShoppingCar().length + 1}`);
+            }
+        }
+    } while (desiredproduct != (getProductsInShoppingCar().length + 1).toString());
+}
+
+function searchProductInShoppingCarByIndex(index) {
+    let searchedProduct = [];
+    getProductsInShoppingCar().forEach ( (product, i) => {
+        if (index == i) {
+            searchedProduct = product;
+        }
+    })
+    return searchedProduct;
+}
+
+function updateProductInShoppingCar(product) {
+    deleteProductInShoppingCar(product);
+    product.inShoppingCar = true;
+    product.amountInShoppingCar = getProductAmount();
+    addProductToShoppingCar(product);
+}
+
+function deleteProductInShoppingCar(product) {
+    shoppingCarTotal -= product.finalPrice * product.amountInShoppingCar;
+    shoppingCarProducts -= product.amountInShoppingCar;
+    product.inShoppingCar = false;
+    product.amountInShoppingCar = 0;
+}
