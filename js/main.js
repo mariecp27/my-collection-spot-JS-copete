@@ -268,13 +268,14 @@ const products = [
 ]
 
 // Variables necesarias
-let option = '';
-let shoppingCarProducts = 0;
-let shoppingCarTotal = 0;
-let productsAmount = products.length;
-let categories = ['Nuevo', 'En oferta', 'Anime/manga', 'DC Comics', 'Comics independientes', 'Marvel Comics', 'Series/películas'];
-let categoriesAmount = categories.length;
+let option = ''; // Opción del menú principal
+let shoppingCarProducts = 0; // Cantidad de productos en el carrito de compras
+let shoppingCarTotal = 0; // Total (COP) del carrito de compras
+let productsAmount = products.length; // Cantidad de productos
+let categories = ['Nuevo', 'En oferta', 'Anime/manga', 'DC Comics', 'Comics independientes', 'Marvel Comics', 'Series/películas']; // Categorías de los productos
+let categoriesAmount = categories.length; // Cantidad de categorías
 
+// Menú principal
 do {
     option = prompt(`¿Cómo podemos ayudarte hoy?
     1. Comprar un producto
@@ -308,6 +309,7 @@ do {
     }
 } while (option != '6');
 
+// Primera opción del menú principal: comprar producto
 function buyProduct() {
     let desiredproduct = '';
     do {
@@ -317,10 +319,8 @@ function buyProduct() {
         } else if (!verifyBeforeBuy(parseInt(desiredproduct))) {
             if (parseInt(desiredproduct) <= productsAmount && parseInt(desiredproduct) > 0) {
                 let product = searchProductByIndex(parseInt(desiredproduct));
-                product.inShoppingCar = true;
-                product.amountInShoppingCar = getProductAmount();
                 addProductToShoppingCar(product);
-                alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
+                printProductsInShoppingCar();
             } else if (parseInt(desiredproduct) > (productsAmount + 1) || parseInt(desiredproduct) <= 0) {
                 alert(`Por favor ingrese una opción válida: 1 - ${productsAmount + 1}`);
             }
@@ -330,6 +330,7 @@ function buyProduct() {
     } while (desiredproduct != (productsAmount + 1).toString());
 }
 
+// Imprimir el nombres de todos los productos seguido de su precio
 function printProducts() {
     let productsString = '';
     products.forEach( (product, i) => {
@@ -338,17 +339,8 @@ function printProducts() {
     return productsString;
 }
 
-function searchProductByIndex(index) {
-    let searchedProduct = products.find(product => product.id === (index));
-    return searchedProduct;
-}
-
-function getProductsInShoppingCar() {
-    let productsInShoppingCar = products.filter(product => product.inShoppingCar);
-    return productsInShoppingCar;
-}
-
-function verifyBeforeBuy(index){
+// Verifica si un producto ya está en el carrito de compras
+function verifyBeforeBuy(index) {
     let isInShoppingCar = false;
     let productsInShoppingCar = getProductsInShoppingCar();
     productsInShoppingCar.forEach( product => {
@@ -359,6 +351,27 @@ function verifyBeforeBuy(index){
     return isInShoppingCar;
 }
 
+// Genera un array con los productos en el carrito de compras
+function getProductsInShoppingCar() {
+    let productsInShoppingCar = products.filter(product => product.inShoppingCar);
+    return productsInShoppingCar;
+}
+
+// Permite buscar productos por su id (corresponde a su posición en el array + 1)
+function searchProductByIndex(index) {
+    let searchedProduct = products.find(product => product.id === (index));
+    return searchedProduct;
+}
+
+// Agrega productos al carrito de compras
+function addProductToShoppingCar(product) {
+    product.inShoppingCar = true;
+    product.amountInShoppingCar = getProductAmount();
+    shoppingCarTotal += product.finalPrice * product.amountInShoppingCar;
+    shoppingCarProducts += product.amountInShoppingCar;
+}
+
+// Obtiene la cantidad a agregar de un producto al carrito de compras siempre que sea un número mayor a 0
 function getProductAmount() {
     let productAmountInput = parseInt(prompt('Por favor ingrese la cantidad a comprar del producto seleccionado:'));
     while (productAmountInput <= 0 || isNaN(productAmountInput)) {
@@ -367,11 +380,12 @@ function getProductAmount() {
     return productAmountInput;
 }
 
-function addProductToShoppingCar(product) {
-    shoppingCarTotal += product.finalPrice * product.amountInShoppingCar;
-    shoppingCarProducts += product.amountInShoppingCar;
+// Imprime el detalle el carrito de compras, cuarta opción del menú principal
+function printProductsInShoppingCar() {
+    alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
 }
 
+// Imprime los productos en el carrito de compras, junto con su cantidad y precio (COP)
 function getProductsInShoppingCarString() {
     let productsInShoppingCar = getProductsInShoppingCar();
     let productsInShoppingCarString = '';
@@ -385,6 +399,7 @@ function getProductsInShoppingCarString() {
     return productsInShoppingCarString;
 }
 
+// Segunda opción del menú principal: búsqueda de producto por nombre
 function productSearchByName() {
     let desiredproduct = prompt('Por favor, ingresa el nombre del producto:').toLowerCase();
     let productsString = '';
@@ -400,6 +415,7 @@ function productSearchByName() {
     }
 }
 
+// Tercera opción del menú principal: filtrado de productos por categoría
 function filterByCategory() {
     let desiredCategory = '';
     do {
@@ -436,6 +452,7 @@ function filterByCategory() {
     } while (desiredCategory != '8');
 }
 
+// Imprime todas las categorías registradas
 function printCategories() {
     let categoriesString = '';
     categories.forEach( (category, i) => {
@@ -444,6 +461,7 @@ function printCategories() {
     return categoriesString;
 }
 
+// Imprime los nombres de los nuevos productos, junto con su precio (COP)
 function getNewProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.newProduct == true);
@@ -453,6 +471,7 @@ function getNewProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos en oferta, junto con su precio (COP)
 function getOnSaleProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.onSale == true);
@@ -462,6 +481,7 @@ function getOnSaleProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos de anime/manga, junto con su precio (COP)
 function getAnimeProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.category == 'anime');
@@ -471,6 +491,7 @@ function getAnimeProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos de DC Comics, junto con su precio (COP)
 function getDcProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.category == 'dcComics');
@@ -480,6 +501,7 @@ function getDcProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos de comics independientes, junto con su precio (COP)
 function getIndependentProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.category == 'independentComics');
@@ -489,6 +511,7 @@ function getIndependentProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos de Marvel Comics, junto con su precio (COP)
 function getMarvelProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.category == 'marvelComics');
@@ -498,6 +521,7 @@ function getMarvelProducts() {
     return productsString;
 }
 
+// Imprime los nombres de los productos de series/peículas, junto con su precio (COP)
 function getSeriesProducts() {
     let productsString = '';
     let filteredProducts = products.filter(product => product.category == 'series');
@@ -507,10 +531,7 @@ function getSeriesProducts() {
     return productsString;
 }
 
-function printProductsInShoppingCar() {
-    alert(`Total compra: ${shoppingCarTotal}\nCantidad de productos en el carrito de compras: ${shoppingCarProducts}\nDetalle: ${getProductsInShoppingCarString()}`);
-}
-
+// Quinta opción del menú principal: actualización del carrito de compras (modificación d ecalidad y eliminación de productos)
 function updateShoppingCar() {
     let desiredproduct = '';
     let shoppingCarOption = '';
@@ -541,8 +562,9 @@ function updateShoppingCar() {
     } while (desiredproduct != (getProductsInShoppingCar().length + 1).toString());
 }
 
+// Busca productos en el carrito de compras por un index (posición en el array + 1)
 function searchProductInShoppingCarByIndex(index) {
-    let searchedProduct = [];
+    let searchedProduct = {};
     getProductsInShoppingCar().forEach ( (product, i) => {
         if (index == i) {
             searchedProduct = product;
@@ -551,13 +573,13 @@ function searchProductInShoppingCarByIndex(index) {
     return searchedProduct;
 }
 
+// Modifica la cantidad de un producto en el carrito de compras
 function updateProductInShoppingCar(product) {
     deleteProductInShoppingCar(product);
-    product.inShoppingCar = true;
-    product.amountInShoppingCar = getProductAmount();
     addProductToShoppingCar(product);
 }
 
+// Elimina un producto del carrito de compras
 function deleteProductInShoppingCar(product) {
     shoppingCarTotal -= product.finalPrice * product.amountInShoppingCar;
     shoppingCarProducts -= product.amountInShoppingCar;
