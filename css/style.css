@@ -38,6 +38,230 @@ hr {
 
 /* Transiciones */
 /* Borde letras */
+.main__shopping-car {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s; }
+  .main__shopping-car-hidden {
+    visibility: hidden;
+    opacity: 0; }
+  .main__shopping-car button {
+    color: #011627;
+    border-radius: 50%;
+    border: 5px solid #011627;
+    padding: 10px;
+    background-color: #F71735;
+    box-shadow: 0px 0px 10px #000000;
+    transition: all 0.5s; }
+    .main__shopping-car button:hover {
+      opacity: 0.8; }
+    .main__shopping-car button i {
+      color: #ffffff;
+      font-size: 3rem; }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  .main__shopping-car {
+    bottom: 100px; }
+    .main__shopping-car button {
+      padding: 15px; }
+      .main__shopping-car button i {
+        font-size: 4rem; } }
+
+.main__shopping-car-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s; }
+  .main__shopping-car-container-active {
+    visibility: visible;
+    opacity: 1; }
+  .main__shopping-car-container .main__shopping-car-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    background-color: #011627;
+    color: #FDFFFC;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    text-align: center; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-title {
+      position: relative;
+      width: 100%;
+      padding: 10px; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-title button {
+        padding: 0 10px;
+        background-color: transparent;
+        color: #F71735;
+        font-size: 2rem;
+        border: none;
+        position: absolute;
+        right: 0;
+        transition: all 0.5s; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-title button:hover {
+          opacity: 0.8; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-title h2 {
+        font-family: "Bebas Neue", cursive;
+        font-size: 2rem;
+        letter-spacing: 0.135em; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-hr {
+      margin-bottom: 10px; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products {
+      overflow: auto;
+      max-height: 50vh; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article {
+        margin: 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) 0.5fr;
+        align-items: center;
+        /* Textos de cada producto */ }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article img {
+          width: 100%;
+          background-color: #FDFFFC;
+          border-radius: 10px;
+          padding: 10px; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article h3 {
+          text-align: center;
+          font-size: 1.2rem;
+          font-family: "Lato", sans-serif;
+          font-weight: bold; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article strong {
+          font-size: 1.2rem; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div {
+          display: flex;
+          justify-content: center;
+          font-family: "Bebas Neue", cursive;
+          font-weight: bold; }
+          .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div button {
+            padding: 0 5px;
+            background-color: #F71735;
+            color: #FDFFFC;
+            border: 1px solid #FDFFFC;
+            font-size: 2rem;
+            transition: all 0.5s; }
+            .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div button:hover {
+              opacity: 0.8; }
+          .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div .minus {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px; }
+          .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div .plus {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px; }
+          .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div input {
+            width: 20%;
+            text-align: center;
+            border: 1px solid #FDFFFC;
+            font-weight: bold; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article button {
+          padding: 0 10px;
+          background-color: transparent;
+          color: #F71735;
+          font-size: 2rem;
+          border: none;
+          transition: all 0.5s; }
+          .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article button:hover {
+            opacity: 0.8; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-total {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      padding: 10px;
+      letter-spacing: 0.135em;
+      font-family: "Bebas Neue", cursive; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-total .main__shopping-car-final {
+        background-color: #F71735;
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: #FDFFFC solid 1px;
+        color: #FDFFFC;
+        transition: all 0.5s; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-total .main__shopping-car-final:hover {
+          opacity: 0.8; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-total .main__shopping-car-empty {
+        background-color: transparent;
+        font-size: 2rem;
+        padding: 5px 10px;
+        border: none;
+        color: #F71735;
+        transition: all 0.5s; }
+        .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-total .main__shopping-car-empty:hover {
+          opacity: 0.8; }
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px) {
+  .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article {
+    /* Textos de cada producto */ }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article h3 {
+      font-size: 1.5rem; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article strong {
+      font-size: 1.5rem; } }
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+  .main__shopping-car-container .main__shopping-car-modal {
+    width: 80vw; }
+    .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-products article div button {
+      padding: 0 10px; } }
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+  .main__shopping-car-container {
+    position: fixed;
+    bottom: 100px;
+    right: -100%;
+    width: 40vw;
+    height: auto;
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 3; }
+    .main__shopping-car-container-active {
+      visibility: visible;
+      opacity: 1;
+      right: 20px;
+      pointer-events: none; }
+    .main__shopping-car-container .main__shopping-car-modal {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #011627;
+      color: #FDFFFC;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0px 0px 10px #000000;
+      text-align: center;
+      pointer-events: all; }
+      .main__shopping-car-container .main__shopping-car-modal .main__shopping-car-title {
+        position: relative;
+        width: 100%;
+        padding: 10px; } }
+
+@media only screen and (min-width: 1400px) {
+  .main__shopping-car-container {
+    width: 30vw; }
+    .main__shopping-car-container .main__shopping-car-modal article img {
+      width: 20%; } }
+
 .header__nav {
   /* Logo */
   /* Barra de navegación */ }

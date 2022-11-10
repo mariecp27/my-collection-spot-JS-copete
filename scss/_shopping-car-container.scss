@@ -1,0 +1,274 @@
+.main__shopping-car-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    @include myTransition;
+
+    &-active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .main__shopping-car-modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        background-color: map-get($colors, myBlue);
+        color: map-get($colors, myGray);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px #000000;
+        text-align: center;
+    
+        .main__shopping-car-title {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+    
+            button {
+                padding: 0 10px;
+                background-color: transparent;
+                color: map-get($colors, myRed);
+                font-size: 2rem;
+                border: none;
+                position: absolute;
+                right: 0;
+                @include myTransition;
+        
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        
+            h2 {
+                font-family: $myTitle;
+                font-size: 2rem;
+                letter-spacing: 0.135em;
+            }
+        }
+    
+        .main__shopping-car-hr {
+            margin-bottom: 10px;
+        }
+
+        .main__shopping-car-products {
+            overflow: auto;
+            max-height: 50vh;
+
+            article {
+                margin: 10px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr) 0.5fr;
+                align-items: center;
+        
+                img {
+                    width: 100%;
+                    background-color: map-get($colors, myGray);
+                    border-radius: 10px;
+                    padding: 10px;
+                }
+        
+                /* Textos de cada producto */
+                h3 {
+                    text-align: center;
+                    font-size: 1.2rem;
+                    font-family: $myText;
+                    font-weight: bold;
+                }
+                
+                strong {
+                    font-size: 1.2rem;
+                }
+        
+                div {
+                    display: flex;
+                    justify-content: center;
+                    font-family: $myTitle;
+                    font-weight: bold;
+        
+                    button {
+                        padding: 0 5px;
+                        background-color: map-get($colors, myRed);
+                        color: map-get($colors, myGray);
+                        border: 1px solid map-get($colors, myGray);
+                        font-size: 2rem;
+                        @include myTransition;
+        
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+        
+                    .minus {
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                    }
+        
+                    .plus {
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                    }
+        
+                    input {
+                        width: 20%;
+                        text-align: center;
+                        border: 1px solid map-get($colors, myGray);
+                        font-weight: bold;
+                    }
+                }
+        
+                button {
+                    padding: 0 10px;
+                    background-color: transparent;
+                    color: map-get($colors, myRed);
+                    font-size: 2rem;
+                    border: none;
+                    @include myTransition;
+        
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    
+        .main__shopping-car-total {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            padding: 10px;
+            letter-spacing: 0.135em;
+            font-family: $myTitle;
+    
+            .main__shopping-car-final {
+                background-color: map-get($colors, myRed);
+                font-size: 2rem;
+                padding: 5px 10px;
+                border-radius: 10px;
+                border: map-get($colors, myGray) solid 1px;
+                color: map-get($colors, myGray);
+                @include myTransition;
+            
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+    
+            .main__shopping-car-empty {
+                background-color: transparent;
+                font-size: 2rem;
+                padding: 5px 10px;
+                border: none;
+                color: map-get($colors, myRed);
+                @include myTransition;
+            
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+/*===== ESTILOS MOBILE (OTHERS) - SM =====*/
+@media only screen and (min-width: 576px) {
+    .main__shopping-car-container {
+        .main__shopping-car-modal {
+            .main__shopping-car-products {
+                article {
+                    /* Textos de cada producto */
+                    h3 {
+                        font-size: 1.5rem;
+                    }
+                    
+                    strong {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+    .main__shopping-car-container {
+    
+        .main__shopping-car-modal {
+            width: 80vw;
+
+            .main__shopping-car-products article div button {
+                padding: 0 10px;
+            }
+        }  
+    }  
+}
+
+/*===== ESTILOS LG =====*/
+@media only screen and (min-width: 992px) {
+    .main__shopping-car-container {
+        position: fixed;
+        bottom: 100px;
+        right: -100%;
+        width: 40vw;
+        height: auto;
+        background-color: transparent;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        z-index: 3;
+
+        &-active {
+            visibility: visible;
+            opacity: 1;
+            right: 20px;
+            pointer-events: none;
+        }
+    
+        .main__shopping-car-modal {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: map-get($colors, myBlue);
+            color: map-get($colors, myGray);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px #000000;
+            text-align: center;
+            pointer-events: all;
+        
+            .main__shopping-car-title {
+                position: relative;
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .main__shopping-car-container {
+        width: 30vw;
+
+        .main__shopping-car-modal {
+            article {
+                img {
+                    width: 20%;
+                }
+            }
+        }
+    }
+}

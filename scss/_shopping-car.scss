@@ -1,0 +1,48 @@
+.main__shopping-car {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 3;
+    opacity: 1;
+    visibility: visible;
+    @include myTransition;
+
+    &-hidden {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    button {
+        color: map-get($colors, myBlue);
+        border-radius: 50%;
+        border: 5px solid map-get($colors, myBlue);
+        padding: 10px;
+        background-color: map-get($colors, myRed);
+        box-shadow: 0px 0px 10px #000000;
+        @include myTransition;
+        
+        &:hover {
+            opacity: 0.8;
+        }
+        
+        i {
+            color: #ffffff;
+            font-size: 3rem;
+        }
+    }
+}
+
+/*===== ESTILOS TABLET - MD =====*/
+@media only screen and (min-width: 768px) {
+    .main__shopping-car {
+        bottom: 100px;
+    
+        button {
+            padding: 15px;
+            
+            i {
+                font-size: 4rem;
+            }
+        }
+    }
+}
