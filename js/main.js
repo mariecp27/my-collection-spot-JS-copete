@@ -149,7 +149,11 @@ window.addEventListener('load', function() {
 
     function builtShoppingCar() {
         shoppingCarProductsContainer.innerHTML = '';
-        displayProductsInShoppingCar();
+        if (productsInShoppingCar.length > 0) {
+            displayProductsInShoppingCar();
+        } else {
+            shoppingCarProductsContainer.innerHTML = "<h3>¡Oh!, de momento no hay productos en tu carrito</h3>";
+        }
         displayTotalInShoppingCar();
     }
 
@@ -171,8 +175,34 @@ window.addEventListener('load', function() {
             let productPrice = document.createElement('strong');
             productPrice.innerHTML = `${product.priceInShoppingCar} COP`;
 
+            minusButton.addEventListener('click', () => {
+                if (product.amountInShoppingCar > 1) {
+                    product.amountInShoppingCar = productInput.value;
+                    product.priceInShoppingCar -= product.finalPrice;
+                    productPrice.innerHTML = `${product.priceInShoppingCar} COP`;
+                    shoppingCarTotal -= product.finalPrice;
+                    displayTotalInShoppingCar();
+                }
+            })
+
+            plusButton.addEventListener('click', () => {
+                product.amountInShoppingCar = productInput.value;
+                product.priceInShoppingCar += product.finalPrice;
+                productPrice.innerHTML = `${product.priceInShoppingCar} COP`;
+                shoppingCarTotal += product.finalPrice;
+                displayTotalInShoppingCar();
+            })
+
             let trashButton = document.createElement('button');
             trashButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+
+            trashButton.addEventListener('click', () => {
+                shoppingCarTotal -= product.finalPrice * product.amountInShoppingCar;
+                let productIndex = productsInShoppingCar.indexOf(product);
+                productsInShoppingCar.splice(productIndex, 1);
+                builtShoppingCar();
+                displayTotalInShoppingCar();
+            })
 
             productDiv.append(minusButton);
             productDiv.append(productInput);
@@ -185,10 +215,15 @@ window.addEventListener('load', function() {
     }
 
     function displayTotalInShoppingCar() {
-        shoppingCarProductsTotal.innerHTML =`
-            <h3>Total compra: ${shoppingCarTotal} COP</h3>
-            <button class="main__shopping-car-final">Finalizar compra</button>
-            <button class="main__shopping-car-empty">Vaciar carrito</button>
-        `
+        if (productsInShoppingCar.length > 0) {
+            shoppingCarProductsTotal.innerHTML =`
+                <h3>Total compra: ${shoppingCarTotal} COP</h3>
+                <button class="main__shopping-car-final">Finalizar compra</button>
+                <button class="main__shopping-car-empty">Vaciar carrito</button>
+            `
+        } else {
+            shoppingCarProductsTotal.innerHTML = "";
+        }
+
     }
 })
