@@ -142,7 +142,7 @@ const displayProductsInShoppingCar = () => {
         const productArticle = document.createElement('article');
     
         productArticle.innerHTML = `
-            <img src=".${getImgUrl(product)}" alt="Producto">
+            <img src="${getImgUrl(product)}" alt="Producto">
             <h3>${product.name}</h3>
         `
         const productDiv = document.createElement('div');
@@ -245,11 +245,13 @@ const updateProductsAmount = () => {
 
 // Obtener ruta de las imágenes
 const getImgUrl = (product) => {
+    let path = window.location.pathname;
+    let page = path.split("/").pop();
     let productURL = '';
-    try {
-        productURL = `.${product.img}`;
-    } catch(error) {
+    if (page.includes('store') || page.includes('about-us') || page.includes('contact-us')) {
         productURL = `..${product.img}`;
+    } else {
+        productURL = `.${product.img}`;
     }
     return productURL;
 }
