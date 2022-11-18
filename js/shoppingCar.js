@@ -7,9 +7,9 @@ const productsAmountInShoppingCarContainer = document.querySelector('.main__shop
 
 
 // Variables
-let productsInShoppingCar = [];
-let shoppingCarTotal = 0;
-let productsAmountInShoppingCar = 0;
+let productsInShoppingCar = JSON.parse(localStorage.getItem('productsInShoppingCar')) || [];
+let shoppingCarTotal = Number(JSON.parse(localStorage.getItem('shoppingCarTotal'))) || 0;
+let productsAmountInShoppingCar = Number(JSON.parse(localStorage.getItem('productsAmountInShoppingCar'))) || 0;
 
 /* --- Creación de elementos que permitirá controlar cada producto en el carrito --- */
 
@@ -84,6 +84,10 @@ const addProductToShoppingCar = (productId, productAmount) => {
         productsInShoppingCar.push(desiredproduct);
         shoppingCarTotal += desiredproduct.finalPrice * Number(productAmount);
         productsAmountInShoppingCar += Number(productAmount);
+
+        localStorage.setItem('productsInShoppingCar', JSON.stringify(productsInShoppingCar));
+        localStorage.setItem('shoppingCarTotal', shoppingCarTotal);
+        localStorage.setItem('productsAmountInShoppingCar', productsAmountInShoppingCar);
     }
 }
 
@@ -111,6 +115,10 @@ const updateProductInShoppingCar = (productId, productAmount) => {
             product.priceInShoppingCar = product.finalPrice * product.amountInShoppingCar;
             shoppingCarTotal += product.finalPrice * Number(productAmount);
             productsAmountInShoppingCar += Number(productAmount);
+
+            localStorage.setItem('productsInShoppingCar', JSON.stringify(productsInShoppingCar));
+            localStorage.setItem('shoppingCarTotal', shoppingCarTotal);
+            localStorage.setItem('productsAmountInShoppingCar', productsAmountInShoppingCar);
         }
     });
 }
@@ -134,7 +142,7 @@ const displayProductsInShoppingCar = () => {
         const productArticle = document.createElement('article');
     
         productArticle.innerHTML = `
-            <img src=".${product.img}" alt="Producto">
+            <img src=".${getImgUrl(product)}" alt="Producto">
             <h3>${product.name}</h3>
         `
         const productDiv = document.createElement('div');
@@ -155,6 +163,10 @@ const displayProductsInShoppingCar = () => {
                 shoppingCarTotal -= product.finalPrice;
                 productsAmountInShoppingCar--;
                 displayTotalInShoppingCar();
+
+                localStorage.setItem('productsInShoppingCar', JSON.stringify(productsInShoppingCar));
+                localStorage.setItem('shoppingCarTotal', shoppingCarTotal);
+                localStorage.setItem('productsAmountInShoppingCar', productsAmountInShoppingCar);
             }
         });
 
@@ -165,6 +177,10 @@ const displayProductsInShoppingCar = () => {
             shoppingCarTotal += product.finalPrice;
             productsAmountInShoppingCar++;
             displayTotalInShoppingCar();
+
+            localStorage.setItem('productsInShoppingCar', JSON.stringify(productsInShoppingCar));
+            localStorage.setItem('shoppingCarTotal', shoppingCarTotal);
+            localStorage.setItem('productsAmountInShoppingCar', productsAmountInShoppingCar);
         });
 
         let trashButton = createTrashButton(product);
@@ -209,6 +225,10 @@ const createTrashButton = (product) => {
         productsInShoppingCar.splice(productIndex, 1);
         builtShoppingCar();
         displayTotalInShoppingCar();
+
+        localStorage.setItem('productsInShoppingCar', JSON.stringify(productsInShoppingCar));
+        localStorage.setItem('shoppingCarTotal', shoppingCarTotal);
+        localStorage.setItem('productsAmountInShoppingCar', productsAmountInShoppingCar);
     })
 
     return trashButton;
@@ -222,3 +242,17 @@ const updateProductsAmount = () => {
         productsAmountInShoppingCarContainer.innerHTML = `<p>${productsAmountInShoppingCar}</p>`
     }
 }
+
+// Obtener ruta de las imágenes
+const getImgUrl = (product) => {
+    let productURL = '';
+    try {
+        productURL = `.${product.img}`;
+    } catch(error) {
+        productURL = `..${product.img}`;
+    }
+    return productURL;
+}
+
+// Contruye el carrito de compras al ingresar a la página
+builtShoppingCar();
