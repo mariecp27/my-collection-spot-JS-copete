@@ -4,6 +4,8 @@ import * as shoppingCar from './shoppingCar.js';
 // Selectores
 const newProductsContainer = document.querySelector('.main__new-products-container div');
 const onSaleProductsContainer = document.querySelector('.main__onsale-products-container div');
+const newProductsButton = document.querySelector("#newProductsButton");
+const onSaleProductsButton = document.querySelector("#onSaleProductsButton");
 
 // Filtrado de nuevos productos
 function getNewProducts() {
@@ -11,22 +13,24 @@ function getNewProducts() {
 }
 
 // Permite imprimir los nuevos productos en el index al interior del contenedor deseado
-getNewProducts().forEach(product => {
-    const productArticle = document.createElement('article');
-    productArticle.setAttribute('data-aos', 'fade-up');
-    productArticle.setAttribute('class', 'col');
+getNewProducts().forEach( (product, i) => {
+    if (i < 5) {
+        const productArticle = document.createElement('article');
+        productArticle.setAttribute('data-aos', 'fade-up');
+        productArticle.setAttribute('class', 'col');
+        
+        productArticle.innerHTML = `
+            <img src=".${product.img}" alt="Producto">
+            <h3>${product.name}</h3>
+            <h4>${product.serie}</h4>
+            <strong>${product.finalPrice} COP</strong>
+        `
     
-    productArticle.innerHTML = `
-        <img src=".${product.img}" alt="Producto">
-        <h3>${product.name}</h3>
-        <h4>${product.serie}</h4>
-        <strong>${product.finalPrice} COP</strong>
-    `
-
-    let productForm = createProductForm(product);
-    productArticle.append(productForm);
-
-    newProductsContainer.append(productArticle);
+        let productForm = createProductForm(product);
+        productArticle.append(productForm);
+    
+        newProductsContainer.append(productArticle);
+    }
 });
 
 // Filtrado de productos en oferta
@@ -77,3 +81,19 @@ function createProductForm(product) {
 
     return productForm;
 }
+
+// Fitrar nuevos productos en la tienda
+newProductsButton.addEventListener('click', () => {
+    let newProducts = products.filter(product => product.newProduct === true);
+    localStorage.setItem('products', JSON.stringify(newProducts));
+    localStorage.setItem('newProducts', true);
+    localStorage.removeItem('onSaleProducts');
+})
+
+// Fitrar productos en oferta en la tienda
+onSaleProductsButton.addEventListener('click', () => {
+    let onSaleProducts = products.filter(product => product.onSale === true);
+    localStorage.setItem('products', JSON.stringify(onSaleProducts));
+    localStorage.setItem('onSaleProducts', true);
+    localStorage.removeItem('newProducts');
+})
