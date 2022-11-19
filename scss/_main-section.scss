@@ -62,7 +62,16 @@
     margin: 0 20px;
     width: auto;
 
-    /* Titulos seccion principal index */
+    /* Título en cuando no se tiene resultado de productos */
+    .main__products-no-products-title h3{
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 20px;
+        color: map-get($colors, myBlue);
+        text-align: center;
+    }
+
+    /* Títulos seccion principal index */
     h2 {
         font-family: $myTitle;
         font-size: 3rem;
@@ -73,7 +82,7 @@
         margin-bottom: 10px;
     }
 
-    /* Elineación diferente para segundo título del index */
+    /* Alineación diferente para segundo título del index */
     &-on-sale {
         display: flex;
         justify-content: flex-end;

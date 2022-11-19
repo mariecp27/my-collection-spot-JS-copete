@@ -642,9 +642,16 @@ hr {
 .main__products {
   margin: 0 20px;
   width: auto;
-  /* Titulos seccion principal index */
-  /* Elineación diferente para segundo título del index */
+  /* Título en cuando no se tiene resultado de productos */
+  /* Títulos seccion principal index */
+  /* Alineación diferente para segundo título del index */
   /* Contenedor producto individual */ }
+  .main__products .main__products-no-products-title h3 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #011627;
+    text-align: center; }
   .main__products h2 {
     font-family: "Bebas Neue", cursive;
     font-size: 3rem;

@@ -2,6 +2,7 @@ import { products as allProducts } from './products.js';
 import * as shoppingCar from './shoppingCar.js';
 
 // Selectores
+const aboveProductContainer = document.querySelector('.main__products');
 const productsContainer = document.querySelector('.main__products-container div');
 const allCategories = document.querySelectorAll('.main__products-categories ul li');
 const allProductsCategory = document.querySelector('#allProducts');
@@ -21,35 +22,46 @@ if (localStorage.newProducts) {
     onSaleProductsCategory.classList.add('active');
 }
 
+const noProductsTitle = document.createElement('div');
+noProductsTitle.classList.add('cols-12');
+noProductsTitle.classList.add('main__products-no-products-title');
+aboveProductContainer.append(noProductsTitle);
+
 // Permite imprimir los productos al interior del contenedor deseado
 const displayProducts = () => {
-    products.forEach(product => {
-        const productArticle = document.createElement('article');
-        productArticle.setAttribute('data-aos', 'fade-up');
-        productArticle.setAttribute('class', 'col');
-    
-        if (product.onSale) {
-            productArticle.innerHTML = `
-                <img src="..${product.img}" alt="Producto">
-                <h3>${product.name}</h3>
-                <h4>${product.serie}</h4>
-                <em><del>${product.price} COP</del></em>
-                <strong>${product.finalPrice} COP</strong>
-            `
-        } else {
-            productArticle.innerHTML = `
-                <img src="..${product.img}" alt="Producto">
-                <h3>${product.name}</h3>
-                <h4>${product.serie}</h4>
-                <strong>${product.finalPrice} COP</strong>
-            `
-        }
-    
-        let productForm = createProductForm(product);
-        productArticle.append(productForm);
-    
-        productsContainer.append(productArticle);
-    });
+    if (products.length === 0) {
+        noProductsTitle.innerHTML = '<h3>¡Oh!, de momento no tenemos productos con el nombre que buscas</h3>';
+    } else {
+        noProductsTitle.innerHTML = '';
+
+        products.forEach(product => {
+            const productArticle = document.createElement('article');
+            productArticle.setAttribute('data-aos', 'fade-up');
+            productArticle.setAttribute('class', 'col');
+        
+            if (product.onSale) {
+                productArticle.innerHTML = `
+                    <img src="..${product.img}" alt="Producto">
+                    <h3>${product.name}</h3>
+                    <h4>${product.serie}</h4>
+                    <em><del>${product.price} COP</del></em>
+                    <strong>${product.finalPrice} COP</strong>
+                `
+            } else {
+                productArticle.innerHTML = `
+                    <img src="..${product.img}" alt="Producto">
+                    <h3>${product.name}</h3>
+                    <h4>${product.serie}</h4>
+                    <strong>${product.finalPrice} COP</strong>
+                `
+            }
+        
+            let productForm = createProductForm(product);
+            productArticle.append(productForm);
+        
+            productsContainer.append(productArticle);
+        });
+    }
 }
 
 /* Permite añadir a cada producto los elementos que interactúa con el carrito de compra:
