@@ -5,7 +5,6 @@ const shoppingCarProductsContainer = document.querySelector('.main__shopping-car
 const shoppingCarProductsTotal = document.querySelector('.main__shopping-car-total');
 const productsAmountInShoppingCarContainer = document.querySelector('.main__shopping-amount');
 
-
 // Variables
 let productsInShoppingCar = JSON.parse(localStorage.getItem('productsInShoppingCar')) || [];
 let shoppingCarTotal = Number(JSON.parse(localStorage.getItem('shoppingCarTotal'))) || 0;
@@ -202,9 +201,13 @@ const displayTotalInShoppingCar = () => {
     if (productsInShoppingCar.length > 0) {
         shoppingCarProductsTotal.innerHTML =`
             <h3>Total compra: ${shoppingCarTotal} COP</h3>
-            <button class="main__shopping-car-final">Finalizar compra</button>
-            <button class="main__shopping-car-empty">Vaciar carrito</button>
         `
+        let finishPurchaseButton = createFinishPurchaseButton();
+        let emptyShoppingCarButton = createEmptyShoppingCarButton();
+
+        shoppingCarProductsTotal.append(finishPurchaseButton);
+        shoppingCarProductsTotal.append(emptyShoppingCarButton);
+
         updateProductsAmount();
     } else {
         shoppingCarProductsTotal.innerHTML = "";
@@ -213,7 +216,7 @@ const displayTotalInShoppingCar = () => {
     }
 }
 
-// Elimina por completo un prodicto del carrito
+// Elimina por completo un producto del carrito
 const createTrashButton = (product) => {
     let trashButton = document.createElement('button');
     trashButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
@@ -241,6 +244,48 @@ const updateProductsAmount = () => {
         productsAmountInShoppingCarContainer.classList.remove('no-products');
         productsAmountInShoppingCarContainer.innerHTML = `<p>${productsAmountInShoppingCar}</p>`
     }
+}
+
+// Crear botón de 'finalizar compra'
+const createFinishPurchaseButton = () => {
+    let finishPurchaseButton = document.createElement('button');
+    finishPurchaseButton.setAttribute('class', 'main__shopping-car-final');
+    finishPurchaseButton.innerHTML = 'Finalizar compra';
+
+    finishPurchaseButton.addEventListener('click', () => {
+        productsInShoppingCar = [];
+        shoppingCarTotal = 0;
+        productsAmountInShoppingCar = 0;
+
+        localStorage.removeItem('productsInShoppingCar');
+        localStorage.removeItem('shoppingCarTotal');
+        localStorage.removeItem('productsAmountInShoppingCar');
+
+        builtShoppingCar();
+    })
+
+    return finishPurchaseButton;
+}
+
+// Crear botón de 'vaciar carrito'
+const createEmptyShoppingCarButton = () => {
+    let emptyShoppingCartButton = document.createElement('button');
+    emptyShoppingCartButton.setAttribute('class', 'main__shopping-car-empty');
+    emptyShoppingCartButton.innerHTML = 'Vaciar carrito';
+
+    emptyShoppingCartButton.addEventListener('click', () => {
+        productsInShoppingCar = [];
+        shoppingCarTotal = 0;
+        productsAmountInShoppingCar = 0;
+
+        localStorage.removeItem('productsInShoppingCar');
+        localStorage.removeItem('shoppingCarTotal');
+        localStorage.removeItem('productsAmountInShoppingCar');
+
+        builtShoppingCar();
+    })
+
+    return emptyShoppingCartButton;
 }
 
 // Obtener ruta de las imágenes
