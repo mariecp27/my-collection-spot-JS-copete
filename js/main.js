@@ -1,4 +1,3 @@
-import { products } from './products.js';
 import * as shoppingCar from './shoppingCar.js';
 
 // Selectores
@@ -6,6 +5,16 @@ const newProductsContainer = document.querySelector('.main__new-products-contain
 const onSaleProductsContainer = document.querySelector('.main__onsale-products-container div');
 const newProductsButton = document.querySelector("#newProductsButton");
 const onSaleProductsButton = document.querySelector("#onSaleProductsButton");
+
+// Función asíncrona para obtener los productos
+const requestProducts = async () =>  {
+    const res = await fetch('../js/products.json');
+    const data = await res.json();
+
+    return data;
+}
+
+const products = await requestProducts();
 
 // Filtrado de nuevos productos
 function getNewProducts() {

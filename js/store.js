@@ -1,4 +1,3 @@
-import { products as allProducts } from './products.js';
 import * as shoppingCar from './shoppingCar.js';
 
 // Selectores
@@ -13,6 +12,16 @@ const dcComicsCategory = document.querySelector('#dcComics');
 const independentComicsCategory = document.querySelector('#independentComics');
 const marvelComicsCategory = document.querySelector('#marvelComics');
 const seriesCategory = document.querySelector('#series');
+
+// Función asíncrona para obtener los productos
+const requestProducts = async () =>  {
+    const res = await fetch('../js/products.json');
+    const data = await res.json();
+
+    return data;
+}
+
+const allProducts = await requestProducts();
 
 let products = JSON.parse(localStorage.getItem('products')) || [...allProducts];
 

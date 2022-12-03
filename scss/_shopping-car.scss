@@ -57,6 +57,36 @@
     }
 }
 
+.success__title {
+    font-family: $myText;
+    font-size: 2rem;
+}
+
+.swal2-popup.swal2-toast .swal2-title.toast_title {
+    font-family: $myText;
+    font-size: 2rem;
+}
+
+.warning__title {
+    font-family: $myText;
+    font-size: 2rem;
+}
+
+.warning__text {
+    font-family: $myText;
+    font-size: 1.5rem,
+}
+
+.swal2-styled.warning__confirm.warning__confirm {
+    background-color: map-get($colors, myRed);
+    font-size: 1.5rem,
+}
+
+.swal2-styled.swal2-cancel.warning__cancel {
+    background-color: map-get($colors, myBlue);
+    font-size: 1.5rem,
+}
+
 /*===== ESTILOS TABLET - MD =====*/
 @media only screen and (min-width: 768px) {
     .main__shopping-car {

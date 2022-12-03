@@ -1,5 +1,3 @@
-import { products } from './products.js';
-
 // Selectores
 const shoppingCarProductsContainer = document.querySelector('.main__shopping-car-products');
 const shoppingCarProductsTotal = document.querySelector('.main__shopping-car-total');
@@ -9,6 +7,16 @@ const productsAmountInShoppingCarContainer = document.querySelector('.main__shop
 let productsInShoppingCar = JSON.parse(localStorage.getItem('productsInShoppingCar')) || [];
 let shoppingCarTotal = Number(JSON.parse(localStorage.getItem('shoppingCarTotal'))) || 0;
 let productsAmountInShoppingCar = Number(JSON.parse(localStorage.getItem('productsAmountInShoppingCar'))) || 0;
+
+// Función asíncrona para obtener los productos
+const requestProducts = async () =>  {
+    const res = await fetch('../js/products.json');
+    const data = await res.json();
+
+    return data;
+}
+
+const products = await requestProducts();
 
 /* --- Creación de elementos que permitirá controlar cada producto en el carrito --- */
 
@@ -32,7 +40,7 @@ export const createProductFormMinus = (productInput) => {
         if (productInput.value > 1) {
             productInput.value = counter - 1;
         }
-    })
+    });
     
     return productFormMinus;
 }
@@ -47,7 +55,7 @@ export const createProductFormPlus = (productInput) => {
         e.preventDefault();
         let counter = Number(productInput.value);
         productInput.value = counter + 1;
-    })
+    });
 
     return productFormPlus;
 }
@@ -64,6 +72,20 @@ export const createAddToShoppingCarButton = (product, productInput) => {
         addProductToShoppingCar(product.id, productInput.value);
         builtShoppingCar();
         productInput.value = 1;
+
+        Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Producto agregado al carrito',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+
+            customClass: {
+                title:'toast_title',
+            }
+        });
     })
 
     return addToShoppingCarButton;
@@ -253,6 +275,18 @@ const createFinishPurchaseButton = () => {
     finishPurchaseButton.innerHTML = 'Finalizar compra';
 
     finishPurchaseButton.addEventListener('click', () => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '¡Compra finalizada!',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+
+            customClass: {
+                title:'success__title',
+            }
+        })
         productsInShoppingCar = [];
         shoppingCarTotal = 0;
         productsAmountInShoppingCar = 0;
@@ -274,16 +308,54 @@ const createEmptyShoppingCarButton = () => {
     emptyShoppingCartButton.innerHTML = 'Vaciar carrito';
 
     emptyShoppingCartButton.addEventListener('click', () => {
-        productsInShoppingCar = [];
-        shoppingCarTotal = 0;
-        productsAmountInShoppingCar = 0;
+        Swal.fire({
+            title: '¿Deseas eliminar los productos en el carrito?',
+            html: '<p class="warning__text">Este proceso no se puede revertir</p>',
+            icon: 'warning',
+            padding: '1rem',
+            backdrop: true,
+            position: 'center',
+            allowOutsideClick: true,
+            allowEscapeKey: true,
+            allowEnterKey: true,
+            stopKeydownPropagation: false,
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
 
-        localStorage.removeItem('productsInShoppingCar');
-        localStorage.removeItem('shoppingCarTotal');
-        localStorage.removeItem('productsAmountInShoppingCar');
+            customClass: {
+                title:'warning__title',
+                confirmButton: 'warning__confirm',
+                cancelButton: 'warning__cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: '¡Productos Eliminados!',
+                    html: '<p class="warning__text">El carrito ha sido vaciado</p>',
+                    icon: 'success',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    
+                    customClass: {
+                        title:'warning__title',
+                        html: 'warning__text'
+                    }
+                });
 
-        builtShoppingCar();
-    })
+                productsInShoppingCar = [];
+                shoppingCarTotal = 0;
+                productsAmountInShoppingCar = 0;
+        
+                localStorage.removeItem('productsInShoppingCar');
+                localStorage.removeItem('shoppingCarTotal');
+                localStorage.removeItem('productsAmountInShoppingCar');
+        
+                builtShoppingCar();
+            }
+        });
+    });
 
     return emptyShoppingCartButton;
 }
