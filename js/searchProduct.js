@@ -2,9 +2,22 @@
 const searchInput = document.querySelector("#searchInput");
 const searchButon = document.querySelector("#searchButton");
 
+// Obtener ruta de los productos
+const getProductsUrl = () => {
+    let path = window.location.pathname;
+    let page = path.split("/").pop();
+    let productsURL;
+    if (page.includes('store') || page.includes('about-us') || page.includes('contact-us')) {
+        productsURL = '../js/products.json';
+    } else {
+        productsURL = './js/products.json';
+    }
+    return productsURL;
+}
+
 // Función asíncrona para obtener los productos
 const requestProducts = async () =>  {
-    const res = await fetch('../js/products.json');
+    const res = await fetch(getProductsUrl());
     const data = await res.json();
 
     return data;

@@ -8,7 +8,7 @@ const onSaleProductsButton = document.querySelector("#onSaleProductsButton");
 
 // Función asíncrona para obtener los productos
 const requestProducts = async () =>  {
-    const res = await fetch('../js/products.json');
+    const res = await fetch('./js/products.json');
     const data = await res.json();
 
     return data;
