@@ -26,7 +26,8 @@
     }
 
     /* Botones form */
-    .form__button button {
+    .form__button button,
+    .form__button input {
         @extend .main__button-link;
         margin: 10px;
         width: 80%;

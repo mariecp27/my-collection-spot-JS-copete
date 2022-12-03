@@ -69,11 +69,11 @@
             </div>
         </section>
         <!-- Form -->
-        <form class="main__form container" action="" method="" data-aos="fade-up">
+        <form class="main__form container" action="" method="" data-aos="fade-up" id="form">
             <div class="row justify-content-center m-0">
                 <div class="col-12 m-0 p-0">
                     <div class="form-floating main__form-pair">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingSelect" name="contact-reason" aria-label="Floating label select example" required>
                             <option selected disabled value="">Selecciona la razón de tu contacto</option>
                             <option value="purchase">Compra</option>
                             <option value="complaint">Reclamo</option>
@@ -88,13 +88,13 @@
             <div class="row gx-3 justify-content-between m-0">
                 <div class="col-12 col-md-5 m-0 p-0">
                     <div class="form-floating main__form-pair">
-                        <input type="text" class="form-control" id="name" placeholder="Nombre" name="name">
+                        <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" required>
                         <label for="name">Nombre</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-5 m-0 p-0">
                     <div class="form-floating main__form-pair">
-                        <input type="text" class="form-control" id="last-name" placeholder="Apellido" name="last-name">
+                        <input type="text" class="form-control" id="last-name" placeholder="Apellido" name="last-name" required>
                         <label for="last-name">Apellido</label>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
             <div class="row justify-content-center m-0">
                 <div class="col-12 m-0 p-0">
                     <div class="form-floating main__form-pair">
-                        <input type="email" class="form-control" id="email" placeholder="email@email.com" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="email@email.com" name="email" required>
                         <label for="name">Email</label>
                     </div>
                 </div>
@@ -110,20 +110,22 @@
             <div class="row justify-content-center m-0">
                 <div class="col-12 m-0 p-0">
                     <div class="form-floating main__form-pair">
-                        <textarea class="form-control form__textarea" placeholder="Tu comentario" id="message" cols="30" rows="10" name="message"></textarea>
+                        <textarea class="form-control form__textarea" placeholder="Tu comentario" id="message" cols="30" rows="10" name="message" required></textarea>
                         <label for="message">Mensaje</label>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center m-0 g-5">
                 <div class="col-5 m-0 p-0 d-flex justify-content-center form__button">
-                    <button type="submit">Enviar <i class="fa-solid fa-circle-right"></i></button>
+                    <input type="submit" id="button" value="Enviar📩"></input>
                 </div>
                 <div class="col-5 m-0 p-0 d-flex justify-content-center form__button">
                     <button type="reset">Limpiar <i class="fa-solid fa-trash"></i></button>
                 </div>
             </div>
         </form>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">emailjs.init('e800lF-68qarU7pGp')</script>
         <!-- Shopping car icon -->
         <section class="main__shopping-car">
             <div class="main__shopping-amount no-products">
@@ -216,6 +218,7 @@
     <!-- Sweet Alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Custom JS -->
+    <script src="../js/contactUs.js"></script>
     <script src="../js/shoppingCarModal.js"></script>
     <script src="../js/searchProduct.js" type="module"></script>
     <script src="../js/shoppingCar.js" type="module"></script>

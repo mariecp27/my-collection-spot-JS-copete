@@ -771,7 +771,8 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: center;
   margin: 40px; }
 
-.main__button-link, .main__form .form__button button {
+.main__button-link, .main__form .form__button button,
+.main__form .form__button input {
   background-image: linear-gradient(to bottom, #011627, #FDFFFC);
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
@@ -783,7 +784,8 @@ input[type=number]::-webkit-outer-spin-button {
   white-space: nowrap;
   text-shadow: -1px    -1px    0   #FFFFFFFF, 0       -1px    0   #FFFFFFFF, 1px     -1px    0   #FFFFFFFF, 1px     0       0   #FFFFFFFF, 1px     1px     0   #FFFFFFFF, 0       1px     0   #FFFFFFFF, -1px    1px     0   #FFFFFFFF, -1px    0       0   #FFFFFFFF;
   transition: all 0.5s; }
-  .main__button-link:hover, .main__form .form__button button:hover {
+  .main__button-link:hover, .main__form .form__button button:hover,
+  .main__form .form__button input:hover {
     opacity: 0.8;
     background-image: linear-gradient(to top, #011627, #011627);
     color: #FDFFFC;
@@ -822,7 +824,8 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     margin: 40px; }
-  .main__button-link, .main__form .form__button button {
+  .main__button-link, .main__form .form__button button,
+  .main__form .form__button input {
     font-size: 2.5rem; } }
 
 /*===== ESTILOS LG =====*/
@@ -834,7 +837,8 @@ input[type=number]::-webkit-outer-spin-button {
     .main__products h2 {
       font-size: 5rem; }
   /* Botones "Ver más" */
-  .main__button-link, .main__form .form__button button {
+  .main__button-link, .main__form .form__button button,
+  .main__form .form__button input {
     font-size: 3rem; } }
 
 .main__payment {
@@ -895,11 +899,13 @@ input[type=number]::-webkit-outer-spin-button {
         outline: none;
         border: #F71735 solid 1px;
         box-shadow: none; }
-  .main__form .form__button button {
+  .main__form .form__button button,
+  .main__form .form__button input {
     margin: 10px;
     width: 80%;
     padding: 10px 0; }
-    .main__form .form__button button:hover {
+    .main__form .form__button button:hover,
+    .main__form .form__button input:hover {
       cursor: pointer; }
 
 /* Estilos desde Bootstrap */

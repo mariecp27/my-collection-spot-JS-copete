@@ -12,10 +12,12 @@ const requestProducts = async () =>  {
 
 const products = await requestProducts();
 
+// Permite buscar productos por su nombre
 const productSearchByName = (productName) => {
     return products.filter(product => product.name.toLowerCase().includes(productName));
 }
 
+// Agrefa la función de busqueda al botón de la barra de búsqueda, en el header
 searchButon.addEventListener('click', () => {
     let desiredProductName = searchInput.value;
     let desiredProducts = productSearchByName(desiredProductName);

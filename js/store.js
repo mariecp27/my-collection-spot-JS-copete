@@ -25,12 +25,14 @@ const allProducts = await requestProducts();
 
 let products = JSON.parse(localStorage.getItem('products')) || [...allProducts];
 
+// Permite destacar las opciones de "Nuevo" o "En oferta" cuando se han seleccionado desde el index
 if (localStorage.newProducts) {
     newProductsCategory.classList.add('active');
 } else if (localStorage.onSaleProducts) {
     onSaleProductsCategory.classList.add('active');
 }
 
+// Div donde se mostrará un mensaje en caso tal de que no se encuentren productos bajo un nombre deseado
 const noProductsTitle = document.createElement('div');
 noProductsTitle.classList.add('cols-12');
 noProductsTitle.classList.add('main__products-no-products-title');

@@ -8,5 +8,7 @@ Proyecto realizado en la Carrera de Desarrollo Frontend React de Coder House.
 4. [Animate On Scroll Library](https://michalsnik.github.io/aos/)
 5. [Bootstrap 5](https://getbootstrap.com/)
 6. SASS
+7. [Sweet Alert](https://sweetalert2.github.io/)
+8. [EmailJS](https://www.emailjs.com/)
 
 **El proyecto puede visualizarse en: [Deploy](https://mariecp27.github.io/my-collection-spot-JS-copete/)**
